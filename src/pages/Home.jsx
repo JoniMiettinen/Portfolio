@@ -15,6 +15,7 @@ import Dragon from '../models/Dragon';
 import PineIsland from '../models/PineIsland';
 import Dove from '../models/Dove';
 import Bird2 from '../models/Bird2';
+import { OrbitControls, useCamera } from '@react-three/drei';
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
@@ -75,6 +76,7 @@ const Home = () => {
         className={`w-full h-screen bg-transparent ${isRotating ? "cursor-grabbing" : "cursor-grab"}`}
         camera={{ near: 0.1, far: 1000 }}
       >
+        <OrbitControls /> {/* This fixes the sticky touch move on mobile */}
         <Suspense fallback={<Loader />}>
           <directionalLight position={[1, 1, 1]} intensity={2} />
           <ambientLight intensity={0.5} />
